@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>JOLT Test Tool</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form method="POST" target="/">
+        <div id="Form">
+            <div th:replace="fragments/inputs :: jsonInputCell(label='Json Input', jsonValue=$jsonInput)">...</div>
+            <div th:replace="fragments/inputs :: jsonInputCell(label='JOLT Spec', jsonValue=$joltJson)">...</div>
+            <div th:replace="fragments/inputs :: jsonInputCell(label='Json Output', jsonValue=$outputJson)">...</div>
+        </div>
+    </form>
+<!--    <p th:text="'Hello, ' + ${name} + '!'" />-->
+</body>
+</html>
