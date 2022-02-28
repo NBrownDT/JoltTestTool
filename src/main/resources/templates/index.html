@@ -6,10 +6,13 @@
 </head>
 <body>
     <form method="POST" target="/">
+        <div>
+            <button type="submit" title="Transform" >Transform</button>
+        </div>
         <div id="Form">
-            <div th:replace="fragments/inputs :: jsonInputCell(label='Json Input', jsonValue=$jsonInput)">...</div>
-            <div th:replace="fragments/inputs :: jsonInputCell(label='JOLT Spec', jsonValue=$joltJson)">...</div>
-            <div th:replace="fragments/inputs :: jsonInputCell(label='Json Output', jsonValue=$outputJson)">...</div>
+            <div th:replace="fragments/inputs :: jsonInputCell (title='Json Input', jsonValue=${inputJson}, fieldName='inputJson')">...</div>
+            <div th:replace="fragments/inputs :: jsonInputCell(title='JOLT Spec', jsonValue=${joltJson}, fieldName='joltJson')">...</div>
+            <div th:replace="fragments/inputs :: jsonInputCell(title='Json Output', jsonValue=${outputJson}, fieldName='outputJson')">...</div>
         </div>
     </form>
 <!--    <p th:text="'Hello, ' + ${name} + '!'" />-->

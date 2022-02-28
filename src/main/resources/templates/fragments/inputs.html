@@ -3,10 +3,10 @@
 <head>
 </head>
 <body>
-    <div class="jsonInputCell" th:fragment="jsonInputCell">
-        <label></label>
+    <div class="jsonInputCell" th:fragment="jsonInputCell(title, jsonValue, fieldName)">
+        <label th:for="${fieldName}"><p th:text="${title}" /></label>
         <div class="jsonInputField">
-            <textarea name="" id="" />
+            <textarea th:name="${fieldName}" th:id="${fieldName}" th:text="${jsonValue}"></textarea>
         </div>
     </div>
 
