@@ -1,20 +1,54 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>JOLT Test Tool</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+    <title>Jolt Test Tool</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
+
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1 class="display-3">Jolt Test Tool!</h1>
+                </div>
+                <div class="col-sm-6">
+                    <a class="title-btn btn btn-primary btn-lg" href="https://github.com/bazaarvoice/jolt"
+                       role="button">Learn more »</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <form method="POST" target="/">
-        <div>
-            <button type="submit" title="Transform" >Transform</button>
+        <div th:replace="fragments/inputs :: transformButton" ></div>
+        <hr/>
+        <div class="container">
+            <div class="row">
+                <div th:replace="fragments/inputs :: jsonInputCell(title='Json Input', jsonValue=${inputJson}, fieldName='inputJson')">
+                    ...
+                </div>
+                <div th:replace="fragments/inputs :: jsonInputCell(title='JOLT Spec', jsonValue=${joltJson}, fieldName='joltJson')">
+                    ...
+                </div>
+                <div th:replace="fragments/inputs :: jsonInputCell(title='Json Output', jsonValue=${outputJson}, fieldName='outputJson')">
+                    ...
+                </div>
+            </div>
         </div>
-        <div id="Form">
-            <div th:replace="fragments/inputs :: jsonInputCell (title='Json Input', jsonValue=${inputJson}, fieldName='inputJson')">...</div>
-            <div th:replace="fragments/inputs :: jsonInputCell(title='JOLT Spec', jsonValue=${joltJson}, fieldName='joltJson')">...</div>
-            <div th:replace="fragments/inputs :: jsonInputCell(title='Json Output', jsonValue=${outputJson}, fieldName='outputJson')">...</div>
-        </div>
+        <hr/>
+
+        <div th:replace="fragments/inputs :: transformButton" ></div>
     </form>
-<!--    <p th:text="'Hello, ' + ${name} + '!'" />-->
+</main>
+
 </body>
 </html>

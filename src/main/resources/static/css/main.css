@@ -1,0 +1,23 @@
+.jumbotron {
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    background-color: #e9ecef;
+    border-radius: 0.3rem;
+}
+
+.title-btn {
+    float: right;
+    margin: 14px;
+    bottom: 0px;
+}
+
+.transform-btn{
+    width: 95%;
+    height: 2.2rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 60vh;
+    max-height: 300vh;
+}

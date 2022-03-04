@@ -30,4 +30,10 @@ public class JoltQueryController {
 		return "index";
 	}
 
+
+	@GetMapping("/grid")
+	public String grid(Model model) {
+		return "grid";
+	}
+
 }
