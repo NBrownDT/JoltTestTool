@@ -48,6 +48,11 @@
 
         <div th:replace="fragments/inputs :: transformButton" ></div>
     </form>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Upload Json File
+    </button>
+    <div th:replace="fragments/inputs :: fileUploadModal" ></div>
+    <div th:replace="fragments/bootstrap :: main" ></div>
 </main>
 
 </body>
