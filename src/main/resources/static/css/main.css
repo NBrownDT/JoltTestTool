@@ -16,6 +16,10 @@
     height: 2.2rem;
 }
 
+.inputFieldTitle{
+    margin: 0.5rem;
+}
+
 textarea {
     width: 100%;
     min-height: 60vh;
