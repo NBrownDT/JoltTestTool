@@ -46,13 +46,14 @@
         <hr/>
         <div th:replace="fragments/inputs :: transformButton"></div>
     </form>
-
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Upload Json File
+    <button type="button" class="btn btn-primary" onclick="openInputJsonUploadModal()">
+        new Upload Json File
     </button>
+
 
     <div th:replace="fragments/inputs :: fileUploadModal"></div>
     <div th:replace="fragments/bootstrap :: main"></div>
+    <script src="/js/main.js" ></script>
 </main>
 
 </body>
