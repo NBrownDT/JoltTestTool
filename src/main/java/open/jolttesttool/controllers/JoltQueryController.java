@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class JoltQueryController {
@@ -31,9 +32,22 @@ public class JoltQueryController {
 	}
 
 
-	@GetMapping("/grid")
-	public String grid(Model model) {
-		return "grid";
+	@GetMapping("/upload")
+	public String uploadFile(
+			@RequestParam MultipartFile file,
+			@RequestParam String inputJson,
+			@RequestParam String joltJson,
+			@RequestParam String outputJson,
+			@RequestParam String fieldName,
+			Model model) {
+		//Retrieve contents of file
+
+		//place it in the correct attribute based on the fieldName param
+		model.addAttribute("inputJson", inputJson);
+		model.addAttribute("joltJson", joltJson);
+		model.addAttribute("outputJson", "4444S");
+
+		return "index";
 	}
 
 }

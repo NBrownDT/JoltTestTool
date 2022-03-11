@@ -31,13 +31,13 @@
 
         <div class="container">
             <div class="row">
-                <div th:replace="fragments/inputs :: jsonInputCell(title='Json Input', jsonValue=${inputJson}, fieldName='inputJson')">
+                <div th:replace="fragments/inputs :: jsonInputCell(title='Json Input', jsonValue=${inputJson}, fieldName='inputJson', inputCode='openInputJsonUploadModal()')">
                     ...
                 </div>
-                <div th:replace="fragments/inputs :: jsonInputCell(title='Jolt Spec', jsonValue=${joltJson}, fieldName='joltJson')">
+                <div th:replace="fragments/inputs :: jsonInputCell(title='Jolt Spec', jsonValue=${joltJson}, fieldName='joltJson', inputCode='openJoltJsonUploadModal()')">
                     ...
                 </div>
-                <div th:replace="fragments/inputs :: jsonInputCell(title='Json Output', jsonValue=${outputJson}, fieldName='outputJson')">
+                <div th:replace="fragments/inputs :: jsonInputCell(title='Json Output', jsonValue=${outputJson}, fieldName='outputJson', buttonTitle='Download', inputCode='downloadOutputJson()')">
                     ...
                 </div>
             </div>
@@ -46,10 +46,6 @@
         <hr/>
         <div th:replace="fragments/inputs :: transformButton"></div>
     </form>
-    <button type="button" class="btn btn-primary" onclick="openInputJsonUploadModal()">
-        new Upload Json File
-    </button>
-
 
     <div th:replace="fragments/inputs :: fileUploadModal"></div>
     <div th:replace="fragments/bootstrap :: main"></div>

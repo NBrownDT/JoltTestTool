@@ -3,8 +3,19 @@
 <head>
 </head>
 <body>
-<div class="col-md-4" th:fragment="jsonInputCell(title, jsonValue, fieldName)">
-    <h3><label th:for="${fieldName}"><p class="inputFieldTitle" th:text="${title}"/></label></h3>
+<div class="col-md-4" th:fragment="jsonInputCell(title, jsonValue, fieldName, inputCode)"
+     th:with="buttonTitle=${buttonTitle} ?: 'Upload'">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h3><label th:for="${fieldName}"><p class="inputFieldTitle" th:text="${title}"/></label></h3>
+            </div>
+            <div class="col-sm-4">
+                <a class="btn btn-secondary btn-lg slim-btn" href="#" th:attr="onclick=|${inputCode}|"
+                   role="button"><div  th:text="${buttonTitle}"></div></a>
+            </div>
+        </div>
+    </div>
     <div class="jsonInputField">
         <textarea th:name="${fieldName}" th:id="${fieldName}" th:text="${jsonValue}"></textarea>
     </div>
@@ -26,15 +37,15 @@
             </div>
             <form method="POST" target="/upload">
                 <div class="modal-body">
-                    file input<br/>
-                    <input type="hidden" name="inputJson" id="uploadInputJson" />
-                    <input type="hidden" name="joltJson" id="uploadJoltJson" />
-                    <input type="hidden" name="outputJson" id="uploadOutputJson" />
-                    <input type="hidden" name="fieldName" id="fieldName" />
+                    <input type="file" name="file" class="form-control-file" />
+                    <input type="hidden" name="inputJson" id="uploadInputJson"/>
+                    <input type="hidden" name="joltJson" id="uploadJoltJson"/>
+                    <input type="hidden" name="outputJson" id="uploadOutputJson"/>
+                    <input type="hidden" name="fieldName" id="fieldName"/>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Upload</button>
+                    <button type="button" >Upload</button>
                 </div>
 
             </form>

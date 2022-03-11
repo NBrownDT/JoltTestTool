@@ -11,6 +11,10 @@
     bottom: 0px;
 }
 
+.slim-btn {
+     float: right;
+ }
+
 .transform-btn{
     width: 95%;
     height: 2.2rem;
