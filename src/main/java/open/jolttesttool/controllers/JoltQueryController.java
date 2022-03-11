@@ -51,7 +51,7 @@ public class JoltQueryController {
 	}
 
 
-	@GetMapping(value="/download", headers=("produces=multipart/*"))
+	@PostMapping(value="/download", headers=("produces=multipart/*"))
 	public void downloadFile(HttpServletRequest request,
 							 HttpServletResponse response,
 							 @RequestParam String outputJson) {
