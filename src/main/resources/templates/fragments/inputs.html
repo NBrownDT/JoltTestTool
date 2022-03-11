@@ -35,7 +35,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Upload Json File</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" target="/upload">
+            <form method="POST" action="/upload" enctype="multipart/form-data" >
                 <div class="modal-body">
                     <input type="file" name="file" class="form-control-file" />
                     <input type="hidden" name="inputJson" id="uploadInputJson"/>
@@ -45,12 +45,18 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" >Upload</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
                 </div>
 
             </form>
         </div>
     </div>
+</div>
+
+<div th:fragment="downloadForm">
+    <form id="downloadForm" method="GET" action="/download" >
+        <input type="hidden" name="outputJson" id="downloadOutputJson"/>
+    </form>
 </div>
 
 </body>

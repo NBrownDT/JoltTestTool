@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 public class JoltQueryController {
 
@@ -18,21 +21,17 @@ public class JoltQueryController {
 	}
 
 	@GetMapping("/")
-	public String start(Model model) {
-		return "index";
-	}
+	public String start(Model model) { return "index"; }
 
 	@PostMapping("/")
 	public String runJoltTransform(@RequestParam String inputJson, @RequestParam String joltJson, Model model) {
 		model.addAttribute("inputJson", inputJson);
 		model.addAttribute("joltJson", joltJson);
 		model.addAttribute("outputJson", joltTransformer.doJoltTransform(inputJson, joltJson));
-
 		return "index";
 	}
 
-
-	@GetMapping("/upload")
+	@PostMapping(value="/upload", headers=("content-type=multipart/*"))
 	public String uploadFile(
 			@RequestParam MultipartFile file,
 			@RequestParam String inputJson,
@@ -40,14 +39,24 @@ public class JoltQueryController {
 			@RequestParam String outputJson,
 			@RequestParam String fieldName,
 			Model model) {
+		//https://attacomsian.com/blog/spring-boot-thymeleaf-file-upload
 		//Retrieve contents of file
 
 		//place it in the correct attribute based on the fieldName param
 		model.addAttribute("inputJson", inputJson);
 		model.addAttribute("joltJson", joltJson);
-		model.addAttribute("outputJson", "4444S");
+		model.addAttribute("outputJson", outputJson);
 
 		return "index";
+	}
+
+
+	@GetMapping(value="/download", headers=("produces=multipart/*"))
+	public void downloadFile(HttpServletRequest request,
+							 HttpServletResponse response,
+							 @RequestParam String outputJson) {
+		//Not sure if any of this is right but I was working from here:
+		//https://howtodoinjava.com/spring-mvc/spring-mvc-download-file-controller-example/
 	}
 
 }
