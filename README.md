@@ -8,9 +8,21 @@ Currently under construction and absolutely non-functional!!!
 `./gradlew bootRun`
 ### Runnable Jar
 Build:  
-`./gradlew bootJar`
-Run
+`./gradlew bootJar`  
+Run:  
 `java -jar build/libs/JoltTestTool-1.0-SNAPSHOT.jar`
+
+### Docker Image
+Build:  
+`docker build . --tag jolt-test-tool`  
+Run:
+`docker build . --progress=plain --tag jolt-test-tool`
+Push to Repository:
+```bash
+docker login registry.example.com -u <username> -p <token>
+docker tag jolt-test-tool registry.sde.nebula.qinetiq.cloud/mission-systems/cicd/jolttesttool/jolt-test-tool:<tag>
+docker push registry.sde.nebula.qinetiq.cloud/mission-systems/cicd/jolttesttool/jolt-test-tool:<tag>
+```
 
 ## Tech Stack
 - Jolt (duh)
