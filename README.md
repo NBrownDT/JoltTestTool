@@ -15,13 +15,13 @@ Run:
 ### Docker Image
 Build:  
 `docker build . --tag jolt-test-tool`  
-Run:
-`docker build . --progress=plain --tag jolt-test-tool`
-Push to Repository:
+Run:  
+`docker build . --progress=plain --tag jolt-test-tool`  
+Push to Repository:  
 ```bash
 docker login registry.example.com -u <username> -p <token>
-docker tag jolt-test-tool registry.sde.nebula.qinetiq.cloud/mission-systems/cicd/jolttesttool/jolt-test-tool:<tag>
-docker push registry.sde.nebula.qinetiq.cloud/mission-systems/cicd/jolttesttool/jolt-test-tool:<tag>
+docker tag jolt-test-tool registry/path/jolt-test-tool:version
+docker push registry/path/jolt-test-tool:version
 ```
 
 ## Tech Stack
@@ -30,3 +30,4 @@ docker push registry.sde.nebula.qinetiq.cloud/mission-systems/cicd/jolttesttool/
 - Thymeleaf
 - Bootstrap (the css/js framework)
 - Gradle
+- Docker (Optional)
