@@ -1,5 +1,6 @@
 package open.jolttesttool.controllers;
 
+import open.jolttesttool.services.FileReader;
 import open.jolttesttool.services.JoltTransformer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,13 +37,22 @@ public class JoltQueryController {
 			@RequestParam String outputJson,
 			@RequestParam String fieldName,
 			Model model) {
-		//https://attacomsian.com/blog/spring-boot-thymeleaf-file-upload
-		//Retrieve contents of file
 
+		String content = (new FileReader()).doFileRead(file);
 		//place it in the correct attribute based on the fieldName param
-		model.addAttribute("inputJson", inputJson);
-		model.addAttribute("joltJson", joltJson);
-		model.addAttribute("outputJson", outputJson);
+		if("inputJson".equals(fieldName)) {
+			model.addAttribute("inputJson", content);
+			  model.addAttribute("joltJson", joltJson);
+			model.addAttribute("outputJson", outputJson);
+		} else if ("joltJson".equals(fieldName)) {
+			model.addAttribute("inputJson", inputJson);
+			  model.addAttribute("joltJson", content);
+			model.addAttribute("outputJson", outputJson);
+		} else if ("outputJson".equals(fieldName)) {
+			model.addAttribute("inputJson", inputJson);
+			  model.addAttribute("joltJson", joltJson);
+			model.addAttribute("outputJson", content);
+		}
 
 		return "index";
 	}
