@@ -31,3 +31,53 @@ docker push registry/path/jolt-test-tool:version
 - Bootstrap (the css/js framework)
 - Gradle
 - Docker (Optional)
+
+## Examples
+Stolen from the official website: https://jolt-demo.appspot.com/
+
+**Json Input**:  
+```JSON
+{
+  "rating": {
+    "primary": {
+      "value": 3
+    },
+    "quality": {
+      "value": 3
+    }
+  }
+}
+```
+
+**Jolt Spec**:
+```JSON
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "rating": {
+        "primary": {
+          "value": "Rating",
+          "max": "RatingRange"
+        },
+        "*": {
+          "max":   "SecondaryRatings.&1.Range",
+          "value": "SecondaryRatings.&1.Value",
+          "$": "SecondaryRatings.&1.Id"
+        }
+      }
+    }
+  },
+  {
+    "operation": "default",
+    "spec": {
+      "Range": 5,
+      "SecondaryRatings": {
+        "*": {
+          "Range": 5
+        }
+      }
+    }
+  }
+]
+```
