@@ -38,6 +38,8 @@ public class JoltQueryController {
 			@RequestParam String fieldName,
 			Model model) {
 
+		System.out.println("Received a /upload request");
+
 		String content = (new FileReader()).doFileRead(file);
 		//place it in the correct attribute based on the fieldName param
 		if("inputJson".equals(fieldName)) {
